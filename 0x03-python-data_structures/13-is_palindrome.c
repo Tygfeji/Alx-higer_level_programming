@@ -1,33 +1,34 @@
 #include "lists.h"
 
 /**
- * palindrom -  recursive palind or not
- * @head: head list
- * Return: 0 if it is not a palindrome
- * 1 if it is a palindrome
+ * is_palindrome - checks if a linked list is a palindrome
+ *
+ * @head: the head address of the linked list
+ *
+ * Return: 1 if it's a palindrome, 0 else
  */
+
 int is_palindrome(listint_t **head)
 {
-	if (head == NULL || *head == NULL)
-		return (1);
-	return (aux_palind(head, *head));
-}
+	listint_t *cur = *head;
+	int tab[2048], i = 0, j = 0;
 
-/**
- * aux_palind - funct to know if is palindrome
- * @head: head list
- * @end: end list
- * Return: 0
- */
-
-int aux_palind(listint_t **head, listint_t *end)
-{
-	if (end == NULL)
-		return (1);
-	if (aux_palind(head, end->next) && (*head)->n == end->n)
+	if (*head)
 	{
-		*head = (*head)->next;
-		return (1);
+		while (cur)
+		{
+			tab[i] = cur->n;
+			cur = cur->next;
+			i++;
+		}
+
+		while (j < i / 2)
+		{
+			if (tab[j] == tab[i - j - 1])
+				j++;
+			else
+				return (0);
+		}
 	}
-	return (0);
+	return (1);
 }
