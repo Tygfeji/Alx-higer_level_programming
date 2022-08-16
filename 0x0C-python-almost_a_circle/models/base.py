@@ -43,7 +43,7 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-filename = cls.__name__ + ".json"
+        filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
             if list_objs is None:
                 jsonfile.write("[]")
@@ -136,7 +136,7 @@ with open(filename, "r") as jsonfile:
             return []
 
     @staticmethod
-def draw(list_rectangles, list_squares):
+    def draw(list_rectangles, list_squares):
         """Draw Rectangles and Squares using the turtle module.
         Args:
             list_rectangles (list): A list of Rectangle objects to draw.
